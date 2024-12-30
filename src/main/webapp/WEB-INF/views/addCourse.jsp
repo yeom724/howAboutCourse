@@ -103,8 +103,8 @@
 	var currentIndex = null;
 	var locationCount = 1;
 	var contextPath = '${pageContext.request.contextPath}';
-	// 마커 배열
-    const markers = [];
+	var map;
+	
 	
 	function addInput(){
 		var newDiv = document.createElement('div');
@@ -185,13 +185,6 @@
 
     // 목록 아이템 클릭 이벤트
     function mapLoad(lat, lng) {
-    	
-    	const mapContainer = $('#map')[0];
-        const mapOption = {
-            center: new kakao.maps.LatLng(35.2345, 128.6936),
-            level: 5
-        };
-        const map = new kakao.maps.Map(mapContainer, mapOption);
 
         // 지도 중심을 선택한 위치로 이동
         map.setCenter(new kakao.maps.LatLng(lat, lng));
@@ -211,9 +204,7 @@
             center: new kakao.maps.LatLng(35.2345, 128.6936),
             level: 5
         };
-        const map = new kakao.maps.Map(mapContainer, mapOption);
-        
-
+        map = new kakao.maps.Map(mapContainer, mapOption);
 
     });
 </script>

@@ -136,6 +136,10 @@ public class WeatherController {
 	        data.put("two", listTwo);
 	        data.put("three", listThree);
 	        
+	        ThreeWeather sub = (ThreeWeather)data.get("three").get(0);
+	        
+	        System.out.println(sub.getFcstDate());
+	        
 		} catch (UnsupportedEncodingException e) { e.printStackTrace(); }
         
         return data;

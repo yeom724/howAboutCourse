@@ -190,7 +190,7 @@ public class MemberController{
 	@PostMapping("/login")
 	public String userGetSession(HttpServletRequest req, RedirectAttributes redirectAttributes) {
 		
-		String home = "redirect:home";
+		String home = "redirect:/";
 		
 		HttpSession session = null;
 		
@@ -204,7 +204,7 @@ public class MemberController{
 			session.setAttribute("userStatus", member);
 		} else { 
 			redirectAttributes.addFlashAttribute("miss","로그인 실패");
-			home = "redirect:login";
+			home = "redirect:/";
 		}
 		
 		return home;
@@ -324,7 +324,7 @@ public class MemberController{
 		HttpSession session = req.getSession(false);
 		if(session != null) { session.invalidate(); }
 		
-		return "redirect:home";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/update/{memberID}")
@@ -401,6 +401,22 @@ public class MemberController{
 		model.addAttribute("list", memberService.getAllMember() );
 		return "member/memberRead";
 		
+	}
+	
+	@GetMapping("/readOne")
+	public String readMyPage(HttpServletRequest req, Model model) {
+		
+		Member member = null;
+		
+		HttpSession session = req.getSession(false);
+		if(session != null) {
+			member = (Member)session.getAttribute("userStatus");
+			if(member != null) {
+				model.addAttribute("member", member);
+			}
+		}
+
+		return "member/myPage";
 	}
 	
 	@PostMapping("/readOne")

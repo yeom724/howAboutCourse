@@ -18,28 +18,45 @@
 	    display: none; /* 초기에는 숨김 */
 	}
 
-.results-container div {
+	.results-container div {
 	    padding: 8px; /* 각 결과의 패딩 */
 	    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
 	}
 
-.results-container div:hover {
+	.results-container div:hover {
 	    background-color: #f0f0f0; /* 호버 효과 */
 	}
+	
+	#memberAddrForm
+	{
+		display: flex;
+	}
+	
+	.formInput
+	{
+		height: 20px;
+	}
+
 </style>
 </head>
 <body>
-	<form:form method="post" modelAttribute="member" enctype="multipart/form-data">
-		유저 이름 : <form:input path="userName"/><br>
-		유저 아이디 : <form:input id="userId" path="userId"/> <button type="button" id="matchTheID" onclick="sendToController('userId')" >아이디 중복검사</button> <br>
-		유저 비밀번호 : <form:input path="userPw"/><br>
-		유저 전화번호 : <form:input path="userTel"/><br>
-		유저 주소 : <form:input path="userAddr" type="text" id="locationInput" onkeyup="searchLocation()" /><br>
-		<div id="results" class="results-container"></div>
-		유저 이메일 : <form:input id="userEmail" path="userEmail"/> <button type="button" id="matchTheID" onclick="sendToController('userEmail')" >이메일 중복검사</button> <br>
-		프로필 사진 : <input type="file" name="userIcon" />
-		<input type="submit" value="전송">
-	</form:form>
+	<div>
+		<form:form method="post" modelAttribute="member" enctype="multipart/form-data">
+			<div class="memberInputDiv"><p class="form_tag">유저 이름 </p><form:input class="formInput" path="userName"/></div>
+			<div class="memberInputDiv"><p class="form_tag">아이디 </p><form:input class="formInput" id="userId" path="userId"/> <button type="button" id="matchTheID" onclick="sendToController('userId')" >아이디 중복검사</button> </div>
+			<div class="memberInputDiv"><p class="form_tag">비밀번호 </p><form:input class="formInput" path="userPw"/></div>
+			<div class="memberInputDiv"><p class="form_tag">전화번호 </p><form:input class="formInput" path="userTel"/></div>
+			<div class="memberInputDiv" id="memberAddrForm">
+				<p class="form_tag">주소 </p><form:input class="formInput" path="userAddr" type="text" id="locationInput" onkeyup="searchLocation()" />
+				<div id="results" class="results-container"></div>
+			</div>
+			
+			<div class="memberInputDiv"><p class="form_tag">이메일 </p><form:input class="formInput" id="userEmail" path="userEmail"/> <button type="button" id="matchTheID" onclick="sendToController('userEmail')" >이메일 중복검사</button> </div>
+			<div class="memberInputDiv"><p class="form_tag">프로필 사진 </p><input class="formInput" type="file" name="userIcon" /></div>
+			<input type="submit" value="전송">
+		</form:form>
+	</div>
+
 	
 	<p> <a href="/howAbout/user/home">Home</a> </p>
 </body>

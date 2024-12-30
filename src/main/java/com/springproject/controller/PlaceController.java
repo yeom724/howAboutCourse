@@ -50,10 +50,10 @@ public class PlaceController {
 	@Autowired
 	PlaceService placeService;
 	
-	@GetMapping("/all")
+	@GetMapping("/serchRest")
 	public String apiAllPlace() {
 		
-		return "place/apiAllPlace";
+		return "place/MapApiPlace";
 	}
 	
 	@ResponseBody
@@ -113,6 +113,17 @@ public class PlaceController {
 		else { jsonApi.put("keyword", serchKey); }
 		
 		return jsonApi;
+
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "/restApiSerch", produces = "application/json; charset=UTF-8")
+	public Map<String, Object> restApiSerch(@RequestBody Map<String, Object> keyword) {
+		
+		String regiontext = (String)keyword.get("region_text");		
+		String serchKey = "경상남도 " + regiontext;
+		
+		return null;
 
 	}
 	

@@ -109,13 +109,17 @@ $(document).ready(function() {
 					var year = fcstDate.substring(0, 4);	//년
 				    var month = fcstDate.substring(4, 6);	//월
 				    var day = fcstDate.substring(6, 8);		//일
+				    console.log("월 : " + month + "일 : " + day);
 				    
 				    if($('#spanYear').text() === year){
-				    	if($('#spanMonth').text() === month){
+				    	console.log($('#spanMonth').text())
+				    
+				    	if(parseInt($('#spanMonth').text()) === parseInt(month)){
 				    		$('.dates').each(function() {
 				    		    const dateText = $(this).text();
+				    		    console.log(dateText)
 
-				    		    if (dateText === day) {
+				    		    if (parseInt(dateText) === parseInt(day)) {
 				    		    	const temp = $('<p></p>');
 				    		    	const spanTMN = $('<span></span>').text("최저"+Math.floor(list[0].fcstValue));
 				    		    	const spanTMX = $('<span></span>').text("최고"+Math.floor(list[1].fcstValue));

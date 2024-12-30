@@ -40,7 +40,7 @@ public class CourseController {
 		        // 세션이 존재하면 처리
 		    	System.out.println("세션 존재");
 		    	System.out.println(session);
-		        Member member = (Member) session.getAttribute("member");
+		        Member member = (Member) session.getAttribute("userStatus");
 		        if (member != null) {
 		            // 로그인 사용자 정보 사용
 		            model.addAttribute("member", member);
@@ -64,7 +64,7 @@ public class CourseController {
 	        // 세션이 존재하면 처리
 	    	System.out.println("세션 존재");
 	    	System.out.println(session);
-	        Member member = (Member) session.getAttribute("member");
+	        Member member = (Member) session.getAttribute("userStatus");
 	        if (member != null) {
 	            // 로그인 사용자 정보 사용
 	        	System.out.println("member 정보 : " + member.getUserId());

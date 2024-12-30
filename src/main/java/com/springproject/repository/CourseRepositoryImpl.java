@@ -35,7 +35,7 @@ public class CourseRepositoryImpl implements CourseRepository{
 		course.setCourse_id(System.currentTimeMillis());
 		course.setCreation_date(LocalDateTime.now());
 		//course.setLocation_names(NewCourse);
-		Member member=(Member)session.getAttribute("member");
+		Member member=(Member)session.getAttribute("userStatus");
 		course.setUserId(member.getUserId());
 		System.out.println("add courseId : " + course.getCourse_id());
 		System.out.println("add 시간 : "+course.getCreation_date());
